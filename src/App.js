@@ -145,6 +145,7 @@ let App = () => {
             dataLength={movies}
             next={() => {
               if (searchYes) {
+                setSearchYes(false)
               } else {
                 setPage(page + 1)
                 fetchMovies(page)
