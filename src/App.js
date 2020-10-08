@@ -16,6 +16,7 @@ let App = () => {
   const apiRoot = "https://api.themoviedb.org/3/movie"
   const apiSearchRoot = "https://api.themoviedb.org/3/search"
   const accessKey = process.env.REACT_APP_MOVIE_API_KEY
+  const [searchYes, setSearchYes] = useState(false)
 
   switch (apiChoice) {
     case 1:
@@ -26,9 +27,6 @@ let App = () => {
       break
     case 3:
       api = `${apiRoot}/upcoming?api_key=${accessKey}&language=en-US&page=${page}` //Upcoming
-      break
-    case 4:
-      api = `${apiRoot}/upcoming?api_key=${accessKey}&language=en-US&page=${page}` //Search
       break
     case 0:
       api = `${apiRoot}/now_playing?api_key=${accessKey}&language=en-US&page=${page}` //Default which is Now Playing
@@ -59,6 +57,7 @@ let App = () => {
   }
 
   const handleSubmit = (e) => {
+    setSearchYes(true)
     e.preventDefault()
     window.scrollTo(0, 0)
     if (searchTerm) {
@@ -75,7 +74,6 @@ let App = () => {
     setSearchTerm(e.target.value)
     setApiChoice(4)
     setPage(1)
-    console.log(apiChoice)
   }
 
   return (
@@ -146,11 +144,14 @@ let App = () => {
           <InfiniteScroll
             dataLength={movies}
             next={() => {
-              setPage(page + 1)
-              fetchMovies(page)
+              if (searchYes) {
+              } else {
+                setPage(page + 1)
+                fetchMovies(page)
+              }
             }}
             hasMore={true}
-            loader={<h4 className="loadingText">Loading...</h4>}
+            loader={<h4></h4>}
           >
             <div className="movieContainer">{movies.length > 0 && movies.map((movie, index) => <Movie {...movie} key={index} />)}</div>
           </InfiniteScroll>
