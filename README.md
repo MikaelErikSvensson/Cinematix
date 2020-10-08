@@ -12,13 +12,4 @@ https://github.com/react-bootstrap/react-bootstrap
 https://github.com/ReactTraining/react-router
 
 
-How to run local version of this app:
-
-Run the commands "npx create-react-app app" and "cd app". Overwrite the folders "public" and "src" with the ones downloaded from this repo.
- 
-Then run the following command:
- 
-npm start
- 
- 
 View live version: cinematix.live
