@@ -13,4 +13,4 @@ https://github.com/ReactTraining/react-router
 
 
 
-View live version: cinematix.live
+View live version: https://www.cinematix.live/
